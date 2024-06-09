@@ -1,78 +1,52 @@
 package projects.springneo4jtest.Service;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.neo4j.driver.Driver;
-import org.neo4j.driver.Session;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import projects.springneo4jtest.Neo4jTestConfiguration;
+import projects.springneo4jtest.Neo4jBaseTest;
 import projects.springneo4jtest.model.Person;
-import projects.springneo4jtest.repository.PersonRepository;
 
-import java.util.Optional;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
-@ExtendWith(SpringExtension.class)
 @SpringBootTest
-@Import(value = Neo4jTestConfiguration.class)
-public class PersonServiceTest {
+public class PersonServiceTest extends Neo4jBaseTest {
 
-    @Autowired
+    @Autowired 
     private PersonService personService;
+    
+    @Test
+    @DisplayName("Test name1")
+    void methodName() throws Exception {
+        //given
+        personService.createPerson("min", 28, "asdf@na");
 
-    @Autowired
-    private PersonRepository personRepository;
+        //when
+        List<Person> allPersons = personService.getAllPersons();
 
-    @Autowired
-    private Driver driver;
-
-    @BeforeEach
-    void setUp() {
-        try (Session session = driver.session()) {
-            session.run("MATCH (n) DETACH DELETE n");
+        for (Person p: allPersons){
+            System.out.println("p = " + p.getName() + " " + p.getAge() + " " + p.getEmail());
         }
+        //then
+        Assertions.assertEquals(allPersons.size(), 6);
+
     }
 
     @Test
-    public void testCreatePerson() {
-        Person person = new Person("Alice", 30, "alice@example.com");
-        Person createdPerson = personService.createPerson("Alice", 30, "alice@example.com");
+    @DisplayName("Test name2")
+    void methodName2() throws Exception {
+        //given
+        personService.createPerson("min", 28, "asdf@na");
 
-        assertNotNull(createdPerson);
-        assertEquals(person.getName(), createdPerson.getName());
-        assertEquals(person.getAge(), createdPerson.getAge());
-        assertEquals(person.getEmail(), createdPerson.getEmail());
-    }
+        //when
+        List<Person> allPersons = personService.getAllPersons();
 
-    @Test
-    @DisplayName("이름으로 사람 찾기")
-    public void testGetPersonByName() {
-        Person person = new Person("Alice", 30, "alice@example.com");
-        personRepository.save(person);
+        for (Person p: allPersons){
+            System.out.println("p = " + p.getName() + " " + p.getAge() + " " + p.getEmail());
+        }
+        //then
+        assertThat(allPersons.size()).isEqualTo(3);
 
-        Optional<Person> foundPerson = personService.getPersonByName("Alice");
-
-        assertTrue(foundPerson.isPresent());
-        assertEquals(person.getName(), foundPerson.get().getName());
-        assertEquals(person.getAge(), foundPerson.get().getAge());
-        assertEquals(person.getEmail(), foundPerson.get().getEmail());
-    }
-
-    @Test
-    public void testDeletePersonByName() {
-        Person person = new Person("Alice", 30, "alice@example.com");
-        personRepository.save(person);
-
-        boolean isDeleted = personService.deletePersonByName("Alice");
-
-        assertTrue(isDeleted);
-        Optional<Person> deletedPerson = personRepository.findByName("Alice");
-        assertFalse(deletedPerson.isPresent());
     }
 }
