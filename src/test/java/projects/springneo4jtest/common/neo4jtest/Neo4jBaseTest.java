@@ -1,4 +1,4 @@
-package projects.springneo4jtest;
+package projects.springneo4jtest.common.neo4jtest;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;

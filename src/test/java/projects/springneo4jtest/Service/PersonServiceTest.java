@@ -3,7 +3,7 @@ package projects.springneo4jtest.Service;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import projects.springneo4jtest.Neo4jBaseTest;
+import projects.springneo4jtest.common.neo4jtest.Neo4jBaseTest;
 import projects.springneo4jtest.model.Person;
 
 import java.util.List;
