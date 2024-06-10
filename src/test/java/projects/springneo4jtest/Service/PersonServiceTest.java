@@ -20,7 +20,7 @@ public class PersonServiceTest extends Neo4jBaseTest {
     @DisplayName("Test name1")
     void methodName() throws Exception {
         //given
-        personService.createPerson("min", 28, "asdf@na");
+        personService.createPerson("dummyPerson", 18, "dummyPerson@na");
 
         //when
         List<Person> allPersons = personService.getAllPersons();
@@ -37,7 +37,7 @@ public class PersonServiceTest extends Neo4jBaseTest {
     @DisplayName("Test name2")
     void methodName2() throws Exception {
         //given
-        personService.createPerson("min", 28, "asdf@na");
+        personService.createPerson("dummyPerson", 22, "dummyPerson@na");
 
         //when
         List<Person> allPersons = personService.getAllPersons();

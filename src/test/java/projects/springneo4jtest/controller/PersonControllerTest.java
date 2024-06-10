@@ -21,7 +21,7 @@ class PersonControllerTest extends Neo4jWebTest {
     @DisplayName("모든 사람 찾기")
     void getAllPersonTest() throws Exception {
         //given
-        Person minwoo = personService.createPerson("minwoo", 26, "minmin@example.com");
+        Person dummyPerson = personService.createPerson("dummyPerson", 55, "dummyPerson@example.com");
 
         //when
         ResultActions perform = Neo4jWebTest.mockMvc.perform(get("/persons"));
