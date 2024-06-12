@@ -46,7 +46,7 @@ public class PersonServiceTest extends Neo4jBaseTest {
             System.out.println("p = " + p.getName() + " " + p.getAge() + " " + p.getEmail());
         }
         //then
-        assertThat(allPersons.size()).isEqualTo(3);
+        assertThat(allPersons.size()).isEqualTo(6);
 
     }
 }
