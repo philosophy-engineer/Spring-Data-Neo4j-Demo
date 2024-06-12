@@ -1,0 +1,4 @@
+=== HTTP-REQUEST HELLO
+include::{snippets}/Person/http-request.adoc[]
+=== HTTP-RESPONSE HELLO
+include::{snippets}/Person/http-response.adoc[]
