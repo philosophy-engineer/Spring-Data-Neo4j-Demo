@@ -5,7 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
-<title>HTTP-REQUEST HELLO</title>
+<meta name="author" content="jojoldu.tistory.com">
+<title>Rest Docs Sample API Document</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -435,53 +436,120 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 </head>
-<body class="article">
+<body class="book toc2 toc-left">
 <div id="header">
+<h1>Rest Docs Sample API Document</h1>
+<div class="details">
+<span id="author" class="author">jojoldu.tistory.com</span><br>
+<span id="revnumber">version 0.0.1-SNAPSHOT</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_소개">소개</a></li>
+<li><a href="#common">공통 사항</a>
+<ul class="sectlevel2">
+<li><a href="#_domain">Domain</a></li>
+<li><a href="#_http_request_hello">HTTP-REQUEST HELLO</a></li>
+<li><a href="#_http_response_hello">HTTP-RESPONSE HELLO</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="content">
+<div class="sect1">
+<h2 id="_소개"><a class="link" href="#_소개">소개</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>API를 Spring Rest Docs로 문서화하기 데모</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="common"><a class="link" href="#common">공통 사항</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>API에 관계없이 아래 사항을 지켜주셔야 합니다.</p>
+</div>
 <div class="sect2">
-<h3 id="_http_request_hello">HTTP-REQUEST HELLO</h3>
+<h3 id="_domain"><a class="link" href="#_domain">Domain</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">환경</th>
+<th class="tableblock halign-left valign-top">domain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">개발서버</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dev.spring-neo4j-test.com</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">운영서버</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>spring-neo4j-test.com</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_http_request_hello"><a class="link" href="#_http_request_hello">HTTP-REQUEST HELLO</a></h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /persons HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /persons HTTP/1.1
 Host: localhost:8080</code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_http_response_hello">HTTP-RESPONSE HELLO</h3>
+<h3 id="_http_response_hello"><a class="link" href="#_http_response_hello">HTTP-RESPONSE HELLO</a></h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 430
+Content-Length: 552
 
-[ {
-  "name" : "Alice",
-  "age" : 30,
-  "email" : "alice@example.com"
-}, {
-  "name" : "Bob",
-  "age" : 25,
-  "email" : "bob@example.com"
-}, {
-  "name" : "Carol",
-  "age" : 27,
-  "email" : "carol@example.com"
-}, {
-  "name" : "Dave",
-  "age" : 35,
-  "email" : "dave@example.com"
-}, {
-  "name" : "Eve",
-  "age" : 22,
-  "email" : "eve@example.com"
-}, {
-  "name" : "dummyPerson",
-  "age" : 55,
-  "email" : "dummyPerson@example.com"
-} ]</code></pre>
+{
+  "http" : {
+    "status" : "OK",
+    "code" : 200
+  },
+  "content" : [ {
+    "name" : "Alice",
+    "age" : 30,
+    "email" : "alice@example.com"
+  }, {
+    "name" : "Bob",
+    "age" : 25,
+    "email" : "bob@example.com"
+  }, {
+    "name" : "Carol",
+    "age" : 27,
+    "email" : "carol@example.com"
+  }, {
+    "name" : "Dave",
+    "age" : 35,
+    "email" : "dave@example.com"
+  }, {
+    "name" : "Eve",
+    "age" : 22,
+    "email" : "eve@example.com"
+  }, {
+    "name" : "dummyPerson",
+    "age" : 55,
+    "email" : "dummyPerson@example.com"
+  } ]
+}</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -489,8 +557,15 @@ Content-Length: 430
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2024-06-12 13:15:48 +0900
+Last updated 2024-06-12 14:17:04 +0900
 </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
 </body>
 </html>
