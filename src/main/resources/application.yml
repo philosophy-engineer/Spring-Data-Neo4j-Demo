@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: spring-neo4j-test
+
+logging:
+  level:
+    org.springframework.data.neo4j: debug
